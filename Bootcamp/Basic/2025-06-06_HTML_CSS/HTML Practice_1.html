@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* 태그 선택자 */
+    body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+    }
+
+    /* 클래스 선택자 */
+    .highlight {
+        color: red;
+        font-weight: bold;
+    }
+
+    /* 아이디 선택자 */
+    #main-section {
+        background-color: white;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        color: gray;
+    }
+</style>
+    <meta charset="UTF-8">
+    <title>나의 첫 웹페이지</title>
+</head>
+<body>
+    <h1>안녕하세요!</h1>
+    <p>이건 나의 첫 HTML 문서입니다.</p>
+</body>
+</html>
+
+<!-- 상단 영역-->
+<header>
+    <h1>나의 웹사이트</h1>
+    <p>환영합니다!</p>
+</header>
+
+<!-- 본문 영역-->
+ <main id="main-section">
+ <div style="background-color: lightblue; padding: 10px; margin: 10px 0;">
+    이것은 div 입니다.
+    <br>줄을 차지하고 위에서 아래로 쌓여요.
+ </div>
+
+ <div style="background-color: lightreen; padding: 10px; margin: 10px 0;">
+    이것도 div입니다. 아래로 배치됩니다.
+ </div>
+    <h2 class="highlight">소개</h2>
+    <p>이 사이트는 HTML을 공부하기 위해 만들었습니다..</p>
+    <p>
+    이 문장에서 <span style="color: red; font-weight: bold;">span</span>은
+        글자 안에 자연스럽게 들어갑니다.
+    </span>
+    </p>
+    <p class="external-style">
+        이것은 외부 스타일입니다.
+    </p>
+    <div class="flex-container">
+        <div class="flex-item">박스 1</div>
+        <div class="flex-item">박스 2</div>
+        <div class="flex-item">박스 3</div>
+    </div>
+</main>
+
+ <!-- 하단 영역-->
+ <footer>
+    <p>&copy; 2025 H. 모든 권리 보유.</p>
+ </footer>
+
+</body>
+</html>

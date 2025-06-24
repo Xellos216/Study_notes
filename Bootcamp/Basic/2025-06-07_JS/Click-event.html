@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>클릭 이벤트 실습</title>
+</head>
+<body>
+    <h2>이벤트 리스너 실습</h2>
+    <button id="btn">눌러보세요!</button>
+    <p id="msg">메세지가 여기에 표시됩니다.</p>
+
+    <script>
+      // 요소 선택
+      const btn = document.getElementById("btn");
+      const msg = document.getElementById("msg");
+
+      // 클릭 이벤트 리스너 등록
+      btn.addEventListener("click", () => {
+        msg.innerText = "버튼이 클릭되었습니다!";
+      });
+    </script>
+</body>
+</html>

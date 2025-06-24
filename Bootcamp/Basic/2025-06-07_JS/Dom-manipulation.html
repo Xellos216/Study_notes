@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 조작 실습</title>
+</head>
+<body>
+    <h1 id="title">원래 제목</h1>
+    <p class="desc">이건 설명입니다.</p>
+
+    <script>
+        const title = document.getElementById("title");
+        const desc = document.querySelector(".desc");
+
+        title.innerText = "변경된 제목"
+        desc.innerText = "설명도 바뀌었습니다!";
+    </script>
+</body>
+</html>

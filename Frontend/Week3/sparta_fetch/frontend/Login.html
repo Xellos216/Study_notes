@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+
+        * {
+            font-family: "Nothing You Could Do", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .mytitle {
+            width: 300px;
+            height: 200px;
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding-top: 30px;
+            border-radius: 8px;
+            background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 20px auto 0px auto
+        }
+
+        .form-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .form-box .row {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: inline-block;
+            width: 60px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .btn-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="mytitle">
+            <h1> 로그인 페이지 </h1>
+            <h5>아이디, 비밀번호를 입력해주세요.</h5>
+        </div>
+        <div class="form-box">
+            <div class="row">
+                <label for="id">ID</label>
+                <input id="id" , type="text" />
+            </div>
+            <div class="row">
+                <label for="pw">PW</label>
+                <input id="pw" , type="text" />
+            </div>
+        </div>
+
+        <div class="btn-box">
+            <button> Login </button>
+        </div>
+    </div>
+</body>
+
+</html>

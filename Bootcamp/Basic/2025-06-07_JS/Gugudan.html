@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>구구단 출력</title>
+</head>
+<body>
+    <h2>구구단 출력기</h2>
+
+    <input type="number" id="danInput" placeholder="단 입력 (예: 7)" />
+    <button id="generateBtn">출력하기</button>
+
+    <ul id="resultList"></ul>
+
+    <script>
+        const generateBtn = document.getElementById("generateBtn");
+        const resultList = document.getElementById("resultList");
+
+        generateBtn.addEventListener("click", () => {
+            const dan = Number(document.getElementById("danInput").value);
+
+            // 결과 초기화
+            resultList.innerHTML = "";
+
+            // 유효성 검사
+            if (dan < 2 || dan > 9) {
+                const li = document.createElement("li");
+                li.innerText = "2단부터 9단까지만 가능합니다!";
+                resultList.appendChild(li);
+                return;
+            }
+
+            // 구구단 출력
+            for (let i = 1; i <= 9; i++) {
+                const li = document.createElement("li");
+                li.innerText = `${dan} x ${i} = ${dan * i}`;
+                resultList.appendChild(li);
+                            }
+        });
+    </script>
+</body>
+</html>
+

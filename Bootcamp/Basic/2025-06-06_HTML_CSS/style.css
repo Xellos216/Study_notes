@@ -1,0 +1,70 @@
+.external-style {
+    color: orange;
+    background-color: black;
+    padding: 10px;
+}
+
+.flex-containter {
+    display: flex;
+    justify-content: space-between; /* 공간 나눔 */
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.flex-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    border-radius: 10px; /* 동일한 너비 */
+}
+
+body {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+main {
+    padding: 30px;
+    background-color:white;
+}
+
+.intro img {
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.flex-item {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;
+
+    /* 글자색 추가 */
+    color: black;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #222;
+    color: #aaa;
+}

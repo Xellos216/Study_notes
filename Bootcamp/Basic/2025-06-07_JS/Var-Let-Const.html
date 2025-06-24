@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<hmtl lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>var, let, const 실습</title>
+</head>
+<body>
+    <h2>Java Script 콘솔 확인</h2>
+
+    <script>
+        var a = 10;
+        let b = 20;
+        const c = 30;
+
+        console.log("초기값:", a, b, c);
+
+        a = 100; // 가능
+        b = 200; // 가능
+        // c = 300; // 주석 해제 시 오류 발생
+
+        console.log("재할당 후:", a, b /*, c */);
+
+        {
+         var a = 'var-scope';
+         let b = 'let-scope';
+         const c = 'const-scope';
+
+         console.log("블록 안:", a, b, c);
+        }
+
+        console.log("블록 밖", a, b, c); // var은 바깥가지 영향, let/const는 아님
+    </script>
+</body>
+</hmtl>

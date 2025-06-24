@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>계산기 실습</title>     
+    </head>
+    <body>
+        <h2>간단한 계산기</h2>
+
+        <input type="number" id="num1" placeholder="숫자 1 입력" />
+        <input type="number" id="num2" placeholder="숫자 2 입력" />
+        <button id="addBtn">더하기</button>
+        <button id="mulBtn">곱하기</button>
+        <button id="divBtn">나누기</button>
+
+        <p id="result">결과과 여기에 표시됩니다.</p>
+
+        <script>
+            const addBtn = document.getElementById("addBtn");
+            const mulBtn = document.getElementById("mulBtn");
+            const divBtn = document.getElementById("divBtn");
+            const result = document.getElementById("result");
+
+            addBtn.addEventListener("click", () => {
+                const n1 = Number(document.getElementById("num1").value);
+                const n2 = Number(document.getElementById("num2").value);
+                const sum = n1 + n2;
+                result.innerText = `결과: ${sum}`; // 
+            });    
+
+            mulBtn.addEventListener("click", () => {
+                const n1 = Number(document.getElementById("num1").value);
+                const n2 = Number(document.getElementById("num2").value);
+                result.innerText = `결과: ${n1 * n2}`;
+            });
+
+            divBtn.addEventListener("click", () => {
+                const n1 = Number(document.getElementById("num1").value);
+                const n2 = Number(document.getElementById("num2").value);
+                result.innerText = n2 === 0 
+                ? "0으로는 나눌 수 없습니다!" 
+                : `결과: ${n1 / n2}`;
+            });
+            
+        </script>
+    </body>
+    </html>

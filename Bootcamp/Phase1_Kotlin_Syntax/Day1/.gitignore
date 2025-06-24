@@ -1,0 +1,19 @@
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Gradle
+.gradle/
+build/
+.gradle-version
+!gradle/wrapper/gradle-wrapper.jar # Gradle Wrapper는 포함 (버전 일관성)
+
+# Kotlin
+*.class
+*.jar
+*.war
+*.kapt.
+*.kotlin_module
+.kotlin/
