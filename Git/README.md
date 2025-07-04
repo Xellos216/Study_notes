@@ -1,27 +1,47 @@
-# Github_Git_Study
+# Git & GitHub CLI 실습 노트
 
-이 레포지토리는 Git 및 GitHub CLI(GitHub Command Line Interface)를 실전 위주로 학습하고,  
-각 명령어의 동작 방식과 사용 흐름을 직접 실습하며 정리하는 데 목적이 있습니다.
+이 문서는 Git과 GitHub CLI(`gh`)에 대한 실습 기반 학습 내용을 정리한 자료 모음입니다.  
+각 주제는 실제 명령어 사용 예시와 함께 단계별로 정리되어 있으며,  
+협업, 배포, CLI 워크플로우 등 실무에 필요한 내용을 폭넓게 다룹니다.
 
-## 🧭 활용 목적
+---
 
-- Git의 주요 개념 및 CLI 명령어 학습
-- GitHub CLI (`gh`) 설치 및 계정 인증 실습
-- GitHub 레포지토리 생성, 커밋, 푸시, PR 등 CLI 기반 워크플로우 정리
-- `HTTPS` vs `SSH` 방식의 차이 및 실제 연결 방식 전환 실습
-- CLI 환경에서 실습하며 발생하는 에러 및 해결 방법 문서화
+## 📦 목적 및 활용
 
-## 📁 정리 방식
+- Git 기본 개념 및 커밋 구조 이해
+- GitHub CLI (`gh`) 설치 및 인증, 레포지토리 생성 실습
+- Pull Request, Fork, 협업 워크플로우 학습
+- GitHub Pages를 통한 정적 사이트 배포 실습
+- 실전 중심으로 오류 해결 및 명령어 흐름 문서화
 
-- `Day_1`, `Day_2` 등 날짜별 실습 폴더
-- 각 폴더마다 `README.md` 또는 `note.md`에 실습 내용 요약
-- CLI 명령어 예제와 그에 대한 설명을 병기하여 실무형 문서 구성
+---
 
-## 🔧 환경 정보
+## 📁 디렉토리 구성
 
-- OS: Ubuntu / Parrot OS 기반 CLI 환경
-- 인증 방식: SSH 기반 GitHub 연결
-- GitHub CLI 버전: 최신 stable
+각 디렉토리는 실습 주제에 따라 다음과 같이 나뉩니다:
 
-## 📝 참고
+- `01_basics`: Git/GitHub 기초 개념
+- `02_setup_cli`: CLI 환경 설정 & 인증
+- `03_gh_commands`: GitHub CLI 명령어 실습
+- `04_collaboration`: 협업, PR, Fork 등
+- `05_deploy`: GitHub Pages 배포 관련
+- `06_reference`: 기타 참고 자료
 
+각 폴더 안의 `.md` 파일들은 독립적으로 작성되며, 지속적으로 추가됩니다.
+
+---
+
+## 🛠 권장 환경
+
+- OS: Ubuntu, WSL2, 또는 Parrot 기반 CLI 환경
+- 인증 방식: SSH 키 기반 GitHub 연결
+- GitHub CLI 버전: 최신 Stable (`gh version`으로 확인)
+
+---
+
+## 🧭 목표
+
+"GitHub에서 CLI만으로 실전 워크플로우를 다룰 수 있다"는 **자신감 있는 상태**가 최종 목표입니다.  
+문서 하나하나를 따라가다 보면, 나중에 스스로 문제 해결이 가능할 만큼 실력이 쌓입니다.
+
+---
