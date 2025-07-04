@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Card 등록</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+    <style>
+        body {
+            background-color: #f0f2f5;
+            overflow-y: scroll;
+        }
+
+        .form-wrapper {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .main {
+            background-color: #f8f9fa;
+            /* 밝은 회색 배경 */
+            padding: 60px 20px 5px;
+            text-align: center;
+        }
+
+        .main h1 {
+            font-weight: 700;
+            font-size: 2.1rem;
+            color: #212529;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 1.5rem;
+            color: #495057;
+            padding: 20px 20px;
+        }
+
+        .intro {
+            background-color: #ffffff;
+        }
+
+        .team-card {
+            background-color: #e9ecef
+        }
+
+        .join {
+            background-color: #dee2e6;
+            /* 연한 분홍색 */
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #343a40;
+            /* 어두운 회색 */
+            color: white;
+            padding: 50px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .nav-btn {
+            background-color: #212529;
+            /* 진한 회색 */
+            color: white;
+            border: none;
+            font-size: 2.5rem;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            padding-bottom: 8px;
+            padding-right: 4px;
+        }
+
+        .nav-btn:hover {
+            background-color: #000;
+            transform: scale(1.1);
+        }
+
+        .card-slider-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+        }
+
+        .left-arrow {
+            left: -60px;
+        }
+
+        .right-arrow {
+            right: -60px;
+        }
+
+        @media (max-width: 576px) {
+            .left-arrow {
+                left: -30px;
+            }
+
+            .right-arrow {
+                right: -30px;
+            }
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            background-color: #ccc;
+        }
+    </style>
+
+
+    <script type="module">
+        // ✅ Firebase 연동
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCRjeXLdZxtdtav-1f1Ogg0-8eUTYJRlzU",
+            authDomain: "sparta-162c6.firebaseapp.com",
+            projectId: "sparta-162c6",
+            storageBucket: "sparta-162c6.appspot.com",
+            messagingSenderId: "338083360334",
+            appId: "1:338083360334:web:ef8c1a44db570c3b849d1f",
+            measurementId: "G-GBNQSKJGGK"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let teamMembers = [];
+        let current = 0;
+
+        async function loadTeamMembers() {
+            const querySnapshot = await getDocs(collection(db, "Team_8"));
+            teamMembers = [];
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                teamMembers.push({
+                    photo: data.image || 'default.png',
+                    name: data.name || '이름 없음',
+                    interest: data.comment || '',
+                    github: data.github || '#'
+                });
+            });
+
+            renderCard(current);
+        }
+
+        function renderCard(index) {
+            if (teamMembers.length === 0) {
+                $("#cardArea").html("<p>팀원 정보가 없습니다.</p>");
+                return;
+            }
+
+            const member = teamMembers[index];
+            const html = `
+    <div class="card" style="width: 18rem;">
+      <img src="${member.photo}" onerror="this.onerror=null; this.src='default.png';" class="card-img-top" alt=" ">
+      <div class="card-body text-center">
+        <h5 class="card-title">${member.name}</h5>
+        <p class="card-text">${member.interest}</p>
+        <a href="${member.github}" target="_blank" class="btn btn-outline-primary">GitHub</a>
+      </div>
+    </div>
+  `;
+            $("#cardArea").html(html);
+        }
+
+        $(document).ready(function () {
+            $("#prevBtn").click(() => {
+                if (teamMembers.length === 0) return;
+                current = (current - 1 + teamMembers.length) % teamMembers.length;
+                renderCard(current);
+            });
+
+            $("#nextBtn").click(() => {
+                if (teamMembers.length === 0) return;
+                current = (current + 1) % teamMembers.length;
+                renderCard(current);
+            });
+
+            $("#toggleFormBtn").click(function () {
+                $("#registerForm").slideToggle();
+            });
+
+            $("#submitBtn").click(async function () {
+                const pw = prompt("팀원 승인 인증번호 필요!");
+                if (pw !== "8888") {
+                    alert("인증번호가 맞지 않습니다.");
+                    return;
+                }
+                const image = $("#image").val();
+                const name = $("#name").val();
+                const comment = $("#comment").val();
+                const github = $("#github").val();
+
+                await addDoc(collection(db, "Team_8"), {
+                    image,
+                    name,
+                    comment,
+                    github
+                });
+
+                alert("등록 완료!");
+
+                // ✅ 입력값 초기화
+                $("#image").val("");
+                $("#name").val("");
+                $("#comment").val("");
+                $("#github").val("");
+
+                // ✅ 폼 접기
+                $("#registerForm").slideUp();
+
+                // ✅ 카드 새로고침
+                loadTeamMembers(); // 또는 location.reload();
+            });
+
+            loadTeamMembers(); // 최초 렌더링
+        });
+
+        $(document).ready(function () {
+            renderCard(current);
+
+            $("#prevBtn").click(() => {
+                current = (current - 1 + teamMembers.length) % teamMembers.length;
+                renderCard(current);
+            });
+
+            $("#nextBtn").click(() => {
+                current = (current + 1) % teamMembers.length;
+                renderCard(current);
+            });
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+
+    <div class="main">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5">
+                <h1>내일배움캠프 백엔드 개발자 양성 과정<br>
+                    Kotlin & Spring 8기</h1>
+                <div class="d-flex justify-content-center align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="section team-card">
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="card-slider-wrapper position-relative">
+                <button id="prevBtn" class="nav-btn left-arrow">‹</button>
+                <div id="cardArea" class="mx-5"></div>
+                <button id="nextBtn" class="nav-btn right-arrow">›</button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section join">
+        <p class="mb-3">팀원으로 합류하고 싶으신가요?</p>
+        <button id="toggleFormBtn" class="btn btn-dark">합류 하기!</button>
+
+        <div id="registerForm" class="form-wrapper mt-4" style="display: none;">
+            <h2 class="mb-4 text-center">정보 등록</h2>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="image" placeholder="이미지">
+                <label for="photo">사진</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="이름">
+                <label for="name">이름</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="comment" placeholder="한마디">
+                <label for="interest">한마디</label>
+            </div>
+            <div class="form-floating mb-4">
+                <input type="text" class="form-control" id="github" placeholder="GitHub">
+                <label for="github">깃허브</label>
+            </div>
+            <button class="btn btn-primary w-100" id="submitBtn">등록하기</button>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        ⓒ 2025 내일배움캠프 Kotlin & Spring 8기 8조 · 모든 권리 보유
+    </footer>
+</body>
+
+</html>

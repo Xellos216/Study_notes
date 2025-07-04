@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["https://xellos216.github.io"],
+    "method": ["GET", "POST", "PUT"],
+    "maxAgeSeconds": 3600
+  }
+]
+
